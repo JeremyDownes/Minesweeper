@@ -1,0 +1,6 @@
+.board {
+	height: 85vh;
+	margin: 1rem;
+	display: grid;
+  grid-gap: 1rem;
+}
