@@ -23,7 +23,8 @@ class Game extends React.Component {
 	playMove(data) {
 		data= data.split(',');
 		this.state.game.flipTile(Number(data[0]),Number(data[1]));
-		this.render();
+	this.state.game.hasSafeTiles
+	
 	}
  
 	render() {

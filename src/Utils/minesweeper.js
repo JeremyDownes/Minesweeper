@@ -44,12 +44,12 @@ export class Minesweeper {
 	}
 
 	get hasSafeTiles() {
+		if (this._numberOfTiles-this._numberOfBombs === 0) {
+			alert ('You Win!!!');
+			window.location.reload();
+		}
 		return (this._numberOfTiles === this._numberOfBombs);
 	} 
-
-	print(board) {
-		console.log(board.map(row=>row.join(" | ")).join("\n"));
-	}
 
 	static generatePlayerBoard(numberOfRows,numberOfColumns) {
 		let board = [];
