@@ -13,9 +13,8 @@ class Board extends React.Component {
 	handleClick(data) {
 		this.props.handleClick(data);
 	}
-	
-	render() {
 
+	render() {
 		let style = {
 		  gridTemplateColumns: '1fr '.repeat(this.props.board.playerBoard[0].length),
  		  gridTemplateRows: '1fr '.repeat(this.props.board.playerBoard.length)
@@ -26,18 +25,20 @@ class Board extends React.Component {
 		return (
 			<div className='board' style={style}>
 
-				{this.props.board.playerBoard.map(row=> {
-					iRow++;
-					return row.map(square=> {
-						iColumn++;
-						iColumn=iColumn%this.props.board.playerBoard[0].length;
-						let myRow = iRow;
-						let myColumn = iColumn;
-						return <Square board={this.props.board} position={[myRow,myColumn]} handleClick={this.handleClick} /> ;
+				{
+					this.props.board.playerBoard.map(row=> {
+						iRow++;
+						return row.map(square=> {
+							iColumn++;
+							iColumn=iColumn%this.props.board.playerBoard[0].length;
+							let myRow = iRow;
+							let myColumn = iColumn;
+							return <Square board={this.props.board} position={[myRow,myColumn]} handleClick={this.handleClick} /> ;
+						})
 					})
-				})
 				}
-				</div>		);
+			</div>
+		);
 	}
 }
 

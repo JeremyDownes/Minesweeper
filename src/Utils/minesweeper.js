@@ -44,11 +44,7 @@ export class Minesweeper {
 	}
 
 	get hasSafeTiles() {
-		if (this._numberOfTiles-this._numberOfBombs === 0) {
-			alert ('You Win!!!');
-			window.location.reload();
-		}
-		return (this._numberOfTiles === this._numberOfBombs);
+		return (this._numberOfTiles-this._numberOfBombs) ;
 	} 
 
 	static generatePlayerBoard(numberOfRows,numberOfColumns) {

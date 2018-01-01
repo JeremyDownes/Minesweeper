@@ -13,6 +13,7 @@ class Game extends React.Component {
 
 	newGame(game) {
 		this.setState({game: game});
+		this.render();
 	}
 
 	async startGame(update) {
@@ -23,7 +24,7 @@ class Game extends React.Component {
 	playMove(data) {
 		data= data.split(',');
 		this.state.game.flipTile(Number(data[0]),Number(data[1]));
-	this.state.game.hasSafeTiles
+		this.state.game.hasSafeTiles
 	
 	}
  

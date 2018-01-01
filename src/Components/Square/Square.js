@@ -15,7 +15,13 @@ class Square extends React.Component {
 		if (this.props.board.playerBoard[this.position[0]][this.position[1]] === 'B') {
 			alert('BOOM!!!');
 			window.location.reload();
+			return
 		}
+		if (this.props.board.hasSafeTiles===0) {
+			alert ('You Win!!!');
+			window.location.reload();
+		}
+
 	}
 
 	render() {
