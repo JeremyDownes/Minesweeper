@@ -27,7 +27,7 @@ class Square extends React.Component {
 	render() {
 		return (
 		  <button className='square' value = {this.props.position} onClick={this.handleClick}>
-	  		{this.state.squareContent}
+	  		{this.props.board.playerBoard[this.position[0]][this.position[1]]}
 		  </button>
 		)
 	}
