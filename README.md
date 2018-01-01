@@ -1,7 +1,7 @@
 ## Minesweeper React
 
 This app is pretty self-explanatory. Credit to the authors of Codecademy resources for the Minesweeper class definition. 
-I'm going to leave this one alone for a while in the hopes that someone will be inspired to take the next step
+I'm going to leave this one alone for awhile in the hopes that someone will be inspired to take the next step
 to improve on the function of this classic game. Any one who is interested should feel free to fork and tweek.
 I'd like to see:
 
