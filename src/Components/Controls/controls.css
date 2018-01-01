@@ -16,5 +16,6 @@ li {
 
 li button {
 	width: 11rem;
+	max-width: 24vw;
 	height: 1.3rem;
 }
