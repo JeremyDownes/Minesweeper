@@ -12,3 +12,4 @@ I'd like to see:
 * Zero value reveal. Clicking once on a zero value square should reveal all adjacent zero value squares.
   Again I have an idea of how to do it and if no one else jumps on it I may revisit it. 
 * Plant flag. Remember from the Windows 98 game? I'd like to see a drag and drop JS implementation in React. 
+* Set default difficulty or game dimensions. 
