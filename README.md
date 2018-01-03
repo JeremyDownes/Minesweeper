@@ -9,7 +9,6 @@ I'd like to see:
 * UI options. Colors, square styles... something creative
 * Square boxes. The squares should be square despite the screen / game dimensions.
   I can think of a couple ways of implementing this but maybe someone else wants a challenge
-* Zero value reveal. Clicking once on a zero value square should reveal all adjacent zero value squares.
-  Again I have an idea of how to do it and if no one else jumps on it I may revisit it. 
+* Zero value reveal. -- DONE
 * Plant flag. Remember from the Windows 98 game? I'd like to see a drag and drop JS implementation in React. 
 * Set default difficulty or game dimensions. 
