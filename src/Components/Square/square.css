@@ -1,9 +1,8 @@
 .square {
-	font-size: 2rem;
+	font-size: 2vw;
 	background-color: lightgray;
 	height: 100%;
 	width: 100%;
 	border-radius: 0px;
-	border: .3vw outset;
 }
 
