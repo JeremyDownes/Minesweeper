@@ -9,15 +9,9 @@ class Square extends React.Component {
 	}
 
 	handleClick(e) {
-		this.props.handleClick(e.target.value)													// this passes the Game component's playMove method the value of the caller which mutates this.props.playerBoard
+		this.props.handleClick(this.props.position[0],this.props.position[1])													// this passes the Game component's playMove method the value of the caller which mutates this.props.playerBoard
 		if (this.props.board.playerBoard[this.position[0]][this.position[1]] === 'B') {										// Checks the board to see if it was a bomb
 			alert('BOOM!!!')
-			window.location.reload()
-			return																																													// prevents exploding and still winning
-		}
-		if (this.props.board.hasSafeTiles===0) {																				// slightly modified original minesweeper code not returning truthy
-			alert ('You Win!!!')
-			window.location.reload()
 		}
 	}
 						// below we render a button with a value equal to its index that will be recalled on click. Button will display content at the index of playerBoard
@@ -27,11 +21,9 @@ class Square extends React.Component {
 		if(content !== ' ') {
 			this.style = {border: '1px solid darkgray'}
 		}
-		if(content === 0) {
-			content = ''
-		}
+
 		return (
-		  <button className='square' value = {this.props.position} onClick={this.handleClick} style={this.style}>
+		  <button className='square' onClick={this.handleClick} style={this.style}>
 	  		{content}
 		  </button>
 		)

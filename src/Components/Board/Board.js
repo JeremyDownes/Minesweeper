@@ -8,10 +8,15 @@ class Board extends React.Component {
 	constructor(props) {
 		super(props)
 		this.handleClick = this.handleClick.bind(this)
+
 	}
 
-	handleClick(data) {
-		this.props.handleClick(data);																									  // passes the event from a square to the game
+	handleClick(x,y) {
+		this.props.handleClick(x,y);																									  // passes the event from a square to the game
+	}
+
+	goBoom() {
+		alert("BOOM!!!")		
 	}
 
 	render() {
@@ -31,7 +36,7 @@ class Board extends React.Component {
 						return row.map(square=> {
 							iColumn++
 							iColumn=iColumn%this.props.board.playerBoard[0].length;
-							return <Square board={this.props.board} position={[iRow,iColumn]} handleClick={this.handleClick}/> 
+							return <Square board={this.props.board} position={[iRow,iColumn]} handleClick={this.handleClick} goBoom={this.goBoom}/> 
 						})
 					})
 				}

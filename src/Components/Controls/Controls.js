@@ -17,18 +17,21 @@ class Controls extends React.Component {
  	}
 
   startGame() {
-    if(this.state.Rows && this.state.Columns && this.state.Bombs) {       // all defined by a number
-    	this.props.onStart(this.state)
+    if (this.state.Bombs < this.state.Columns * this.state.Rows) {
+      if(this.state.Rows && this.state.Columns && this.state.Bombs) {       // all defined by a number
+      	this.props.startGame(this.state)
+      }
     }
   }
 
 	render() {			
 		return (
 			<ul>
+        <li>Points<span>{this.props.points}</span></li>
 				<li>Rows<Input field='Rows' onChange={this.updateState}/></li>					
 				<li>Columns<Input field='Columns' onChange={this.updateState} /></li>
-				<li>Bombs<Input field='Bombs' onChange={this.updateState} /></li>
-				<li>Play<button onClick={this.startGame} /></li>
+				<li>Bombs<Input field='Bombs' onChange={this.updateState} /></li>			
+        <li>Play<button onClick={this.startGame} /></li>
 			</ul>
 		)
 	}

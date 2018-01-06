@@ -17,12 +17,10 @@ li {
 
 li * {
 	margin: .25rem;
-	width: 11rem;
-	min-width: 20rem;
-	max-width: 22vw;
-	height: 1.3rem;
+	width: 18vw;
+	height: 1.2rem;
 }
 
-li button {
-	height: 1.5rem;
+li button, li span {
+	height: 1.4rem;
 }
