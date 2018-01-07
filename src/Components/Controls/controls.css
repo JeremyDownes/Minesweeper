@@ -24,3 +24,13 @@ li * {
 li button, li span {
 	height: 1.4rem;
 }
+
+span {
+	border: 1px solid black;
+}
+
+.flags {
+	position: absolute;
+	top: 4vh;
+	left: -1vw;
+}

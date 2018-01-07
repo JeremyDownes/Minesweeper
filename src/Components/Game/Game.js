@@ -9,9 +9,12 @@ class Game extends React.Component {
 		this.state = {game: new Minesweeper(3,3,1), gameVars: {Rows: 3, Columns: 3, Bombs: 1}}					// When the game is constructed we initiate a new game so we have something to render
 		this.startGame = this.startGame.bind(this)
 		this.playMove = this.playMove.bind(this)
+		this.handleDrop = this.handleDrop.bind(this)
+		this.flagDrag = this.flagDrag.bind(this)
 		this.neighborOffsets = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]]
 		this.points = 0;
 		this.magnitude = this.state.game.playerBoard.length * this.state.game.playerBoard[0].length
+		this.flagId
 	}
 
 	newGame(game, update) {
@@ -63,12 +66,22 @@ class Game extends React.Component {
 		let game = this.state.game
 		this.setState({game: game})
 	}
+
+	flagDrag(id) {
+			this.flagId = id
+	}
+
+	handleDrop(e,location) {
+		e.target.insertAdjacentElement('beforeend',document.getElementById(this.flagId))
+	}
  
 	render() {
+		let bombs = this.state.gameVars.Bombs
+		bombs = Array.apply(null,Array(bombs)).map(function (x,i) {return i})
 		return (
 			<div>
-				<Controls startGame={this.startGame} points = {this.points}/>
-				<Board handleClick={this.playMove} board={this.state.game} startGame={this.startGame}/>
+				<Controls startGame={this.startGame} points = {this.points} dragStart={this.flagDrag} bombs={bombs}/>
+				<Board handleClick={this.playMove} board={this.state.game} startGame={this.startGame} handleDrop={this.handleDrop}/>
 			</div>
 		)
 	}

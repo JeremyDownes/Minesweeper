@@ -1,5 +1,6 @@
 import React from 'react'
 import Input from '../Input/Input.js'
+import Flag from '../Flag/Flag.js'
 import './controls.css'
 
 class Controls extends React.Component {
@@ -27,7 +28,11 @@ class Controls extends React.Component {
 	render() {			
 		return (
 			<ul>
-        <li>Points<span>{this.props.points}</span></li>
+        <li>Points<span>{this.props.points}
+          <div className='flags'> {
+            this.props.bombs.map(bomb=> <Flag dragStart= {this.props.dragStart} id={bomb}/>)}
+          </div>
+        </span></li>
 				<li>Rows<Input field='Rows' onChange={this.updateState}/></li>					
 				<li>Columns<Input field='Columns' onChange={this.updateState} /></li>
 				<li>Bombs<Input field='Bombs' onChange={this.updateState} /></li>			

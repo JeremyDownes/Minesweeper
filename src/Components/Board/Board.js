@@ -2,8 +2,6 @@ import React from 'react'
 import Square from '../Square/Square'
 import './board.css'
 
-
-
 class Board extends React.Component {
 	constructor(props) {
 		super(props)
@@ -13,10 +11,6 @@ class Board extends React.Component {
 
 	handleClick(x,y) {
 		this.props.handleClick(x,y);																									  // passes the event from a square to the game
-	}
-
-	goBoom() {
-		alert("BOOM!!!")		
 	}
 
 	render() {
@@ -36,7 +30,7 @@ class Board extends React.Component {
 						return row.map(square=> {
 							iColumn++
 							iColumn=iColumn%this.props.board.playerBoard[0].length;
-							return <Square board={this.props.board} position={[iRow,iColumn]} handleClick={this.handleClick} goBoom={this.goBoom}/> 
+							return <Square board={this.props.board} position={[iRow,iColumn]} handleClick={this.handleClick} handleDrop={this.props.handleDrop}/> 
 						})
 					})
 				}
