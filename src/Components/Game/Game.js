@@ -22,6 +22,10 @@ class Game extends React.Component {
 
 	newGame(game, update) {
 		this.magnitude = this.state.game.playerBoard.length * this.state.game.playerBoard[0].length
+		for(let i=0; i<this.state.gameVars.Bombs; i++) {
+			document.getElementById('base').insertAdjacentElement('beforeend',document.getElementById(i))
+		}
+		this.flagged = {}
 		this.setState({game: game, gameVars: update});
 	}
 
@@ -89,7 +93,6 @@ class Game extends React.Component {
 
 	handleDrop(e,location) {
 		this.flagged[this.flagId] = location
-		console.log(this.flagged)
 		e.target.insertAdjacentElement('beforeend',document.getElementById(this.flagId))
 	}
 
@@ -103,7 +106,7 @@ class Game extends React.Component {
 		return (
 			<div>
 				<Controls startGame={this.startGame} points = {this.points} dragStart={this.flagDrag} bombs={bombs}/>
-				<div onDragOver={this.allowDrop} onDrop={this.handleDrop} style={{height: '.75rem',position: 'relative', bottom: '.3rem'}}>
+				<div onDragOver={this.allowDrop} onDrop={this.handleDrop} style={{height: '.75rem',position: 'relative', bottom: '.3rem'}} id='base'>
 					{bombs.map(bomb=> <Flag dragStart={this.flagDrag} id={bomb}/>)}
 				</div>
 				<Board handleClick={this.playMove} board={this.state.game} startGame={this.startGame} handleDrop={this.handleDrop}/>
