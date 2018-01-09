@@ -26,17 +26,17 @@ class Square extends React.Component {
 
 						// below we render a button with a value equal to its index that will be recalled on click. Button will display content at the index of playerBoard
 	render() {
-		this.style = {border: '1vw outset'};
+		this.style = {border: (1/this.props.board.playerBoard.length)*9+'vw outset'};
 		let content = this.props.board.playerBoard[this.position[0]][this.position[1]]
 		if(content !== ' ') {
-			this.style = {border: '1px solid darkgray'}
+			this.style = {border: '1px solid darkgray',	overflow: 'visible'}
 		}
 
 		return (
 		  <button className='square' 
 		  	onClick={this.handleClick} 
 				onDragOver={this.allowDrop}
-				onDrop={this.drop} 
+				onDrop={this.drop}
 				style={this.style}
 			>
 	  		{content}

@@ -79,7 +79,7 @@ class Game extends React.Component {
 	checkFlagged(x,y) {
 		let isFlagged = false
 		let position = [x,y]
-		let flags = Object.values(this.flagged).forEach(flag=> {
+		Object.values(this.flagged).forEach(flag=> {
 			if(String(flag) === String(position)) {
 				isFlagged = true
 			} 
