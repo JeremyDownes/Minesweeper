@@ -15,23 +15,30 @@ class Game extends React.Component {
 		this.checkFlagged = this.checkFlagged.bind(this)
 		this.neighborOffsets = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]]
 		this.points = 0;
-		this.magnitude = this.state.game.playerBoard.length * this.state.game.playerBoard[0].length
+		this.magnitude = this.state.game.playerBoard.length * this.state.game.playerBoard[0].length * this.state.game._numberOfBombs
 		this.flagId = null
 		this.flagged = {}
 	}
 
-	newGame(game, update) {
-		this.magnitude = this.state.game.playerBoard.length * this.state.game.playerBoard[0].length
-		for(let i=0; i<this.state.gameVars.Bombs; i++) {
-			document.getElementById('base').insertAdjacentElement('beforeend',document.getElementById(i))
-		}
-		this.flagged = {}
-		this.setState({game: game, gameVars: update});
-	}
-
 	async startGame(update = this.state.gameVars) {																// async to make sure we have the new game object before setting state 
 		let newGame = await new Minesweeper(update.Rows,update.Columns,update.Bombs)   // The update object is passed in from the Controls component
-		this.newGame(newGame, update);
+			this.newGame(newGame, update)
+		
+	}
+
+	newGame(game, update) {
+		this.magnitude = this.state.game.playerBoard.length * this.state.game.playerBoard[0].length * this.state.game._numberOfBombs
+		for(let i=0; i<this.state.gameVars.Bombs; i++) {
+			if(document.getElementById(i)) {
+				document.getElementById('base').insertAdjacentElement('beforeend',document.getElementById(i))
+			}
+		}
+		this.flagged = {}
+		try {
+			this.setState({game: game, gameVars: update});
+		} catch(error) {
+			window.location.reload()
+		}
 	}
 
 	clear(x,y) {	
@@ -63,7 +70,7 @@ class Game extends React.Component {
 			if (this.state.game.hasSafeTiles === 0) {
 			  let upgrade = {Rows: Number(this.state.gameVars.Rows) + 1, Columns: Number(this.state.gameVars.Columns) + 1, Bombs: Number(this.state.gameVars.Bombs) + 1}
 				alert("You Win!!!")
-				this.points+= this.magnitude 
+				this.points+= this.magnitude
 				this.startGame(upgrade)
 				return
 			}
@@ -100,14 +107,22 @@ class Game extends React.Component {
 		e.preventDefault()
 	}
  
+	generateFlagArray() {
+		let flags = []
+						for(let x = 0; x < this.state.gameVars.Bombs; x++) {
+							flags.push(<Flag dragStart={this.flagDrag} id={x}/>)
+						}
+					return flags
+	}
+
 	render() {
-		let bombs = this.state.gameVars.Bombs
-		bombs = Array.apply(null,Array(bombs)).map(function (x,i) {return i})
 		return (
 			<div>
-				<Controls startGame={this.startGame} points = {this.points} dragStart={this.flagDrag} bombs={bombs}/>
+				<Controls startGame={this.startGame} points = {this.points} dragStart={this.flagDrag} bombs={this.state.gameVars.Bombs}/>
 				<div onDragOver={this.allowDrop} onDrop={this.handleDrop} style={{height: '.75rem',position: 'relative', bottom: '.3rem'}} id='base'>
-					{bombs.map(bomb=> <Flag dragStart={this.flagDrag} id={bomb}/>)}
+					{
+						this.generateFlagArray()
+					}
 				</div>
 				<Board handleClick={this.playMove} board={this.state.game} startGame={this.startGame} handleDrop={this.handleDrop}/>
 			</div>
