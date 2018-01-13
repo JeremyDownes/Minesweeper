@@ -27,8 +27,7 @@ class Controls extends React.Component {
 	render() {			
 		return (
 			<ul>
-        <li>Points<span>{this.props.points}
-        </span></li>
+        <li>Points<span>{this.props.points}</span></li>
 				<li>Rows<Input field='Rows' onChange={this.updateState}/></li>					
 				<li>Columns<Input field='Columns' onChange={this.updateState} /></li>
 				<li>Bombs<Input field='Bombs' onChange={this.updateState} /></li>			
