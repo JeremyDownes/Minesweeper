@@ -2,6 +2,10 @@ branch-defaults:
   master:
     environment: node-env
     group_suffix: null
+environment-defaults:
+  node-env:
+    branch: null
+    repository: null
 global:
   application_name: Minesweeper
   branch: null
