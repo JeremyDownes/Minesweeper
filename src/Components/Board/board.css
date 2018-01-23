@@ -1,5 +1,7 @@
 .board {
 	height: 85vh;
-	margin: 1rem;
+	max-height: 100vw;
+	max-width: 85vh;
+	margin: auto;
 	display: grid;
 }
